@@ -71,7 +71,7 @@ public class PokemonResource {
     }
 
     @GetMapping(
-            path = "events",
+            path = "/events",
             produces = TEXT_EVENT_STREAM_VALUE
     )
     public Flux<PokemonEvent> findPokemonEvents() {
