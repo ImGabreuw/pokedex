@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Pokemons em eventos</title>
+</head>
+<body>
+<ul></ul>
+
+<script type="text/javascript">
+    if (!!window.EventSource) {
+        const eventSource = new EventSource("http://localhost:8080/pokemons/events");
+        const eventList = document.querySelector("ul");
+
+        eventSource.onmessage = function (event) {
+            const newElement = document.createElement("li");
+
+            newElement.textContent = "Event: " + event.data
+
+            eventList.appendChild(newElement);
+        }
+    } else {
+        alert("Browser não suporta event sourcing!");
+    }
+</script>
+</body>
+</html>
